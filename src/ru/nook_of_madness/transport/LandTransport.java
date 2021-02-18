@@ -8,9 +8,8 @@ public class LandTransport extends Transport {
 
 
     public LandTransport(String name, int speed, int restInterval) {
-        super(name, speed, TransportType.LAND);
+        super(name, speed);
         this.restInterval = restInterval;
-        this.transportType = TransportType.LAND;
         this.toRest = restInterval;
     }
 

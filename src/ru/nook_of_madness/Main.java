@@ -7,7 +7,7 @@ import ru.nook_of_madness.transport.Transports;
 public class Main {
 
     public static void main(String[] args) {
-        Race race = new Race(10000, RaceTransportConditionType.ALL);
+        Race race = new Race(10000, RaceTransportConditionType.FLIGHT);
         race.addTransport(Transports.BOOTS);
         race.addTransport(Transports.BROOM);
         race.addTransport(Transports.FLYING_CARPET);

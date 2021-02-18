@@ -18,10 +18,10 @@ public class Race {
     }
 
     public void addTransport(Transport transport) {
-        if (raceTransportConditionType.isAllowedTransport(transport.getTransportType())) {
+        if (raceTransportConditionType.isAllowedTransport(transport)) {
             transportList.add(transport);
         } else {
-            throw new RuntimeException(transport.getTransportType().name() + " is not allowed in race typed " + raceTransportConditionType.name());
+            throw new RuntimeException(transport + " is not allowed in race typed " + raceTransportConditionType.name());
         }
     }
 

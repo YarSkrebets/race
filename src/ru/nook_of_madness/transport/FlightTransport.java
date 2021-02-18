@@ -4,7 +4,7 @@ public class FlightTransport extends Transport {
     private double modifier = Double.NaN;
 
     public FlightTransport(String name, int speed) {
-        super(name, speed, TransportType.FLIGHT);
+        super(name, speed);
     }
 
     public double calculateModifier(int distance) {

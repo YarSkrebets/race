@@ -1,26 +1,27 @@
 package ru.nook_of_madness;
 
-import ru.nook_of_madness.transport.TransportType;
+import ru.nook_of_madness.transport.FlightTransport;
+import ru.nook_of_madness.transport.LandTransport;
+import ru.nook_of_madness.transport.Transport;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public enum RaceTransportConditionType {
-    LAND(TransportType.LAND), FLIGHT(TransportType.FLIGHT), ALL(TransportType.LAND, TransportType.FLIGHT);
+    LAND(transport -> transport instanceof LandTransport),
+    FLIGHT(transport -> transport instanceof FlightTransport),
+    ALL(transport -> transport instanceof LandTransport || transport instanceof FlightTransport);
 
-    private Set<TransportType> availableTransportType;
 
-    RaceTransportConditionType(TransportType... availableTransportType) {
-        this.availableTransportType = new HashSet<>();
-        this.availableTransportType.addAll(Arrays.asList(availableTransportType));
+    private Predicate<Transport> transportPredicate;
+    RaceTransportConditionType(Predicate<Transport> predicate) {
+        this.transportPredicate = predicate;
     }
 
-    public Set<TransportType> getAvailableTransportType() {
-        return availableTransportType;
+    public boolean isAllowedTransport(Transport transport) {
+        return transportPredicate.test(transport);
     }
 
-    public boolean isAllowedTransport(TransportType transportType) {
-        return availableTransportType.contains(transportType);
-    }
 }
